@@ -17,6 +17,10 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 
+static void (^ABXFeedbackViewControllerShowBlock)(UIViewController* vc);
+
+@import MessageUI;
+
 @interface ABXFeedbackViewController ()<UITextViewDelegate, UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) ABXTextView *textView;
@@ -153,12 +157,24 @@ static NSInteger const kCloseAlert = 1;
     }
 }
 
+// If this is set, invokes block instead of default action.
++ (void)setShowFromControllerBlock:(void(^)(UIViewController* controller))showBlock
+{
+    ABXFeedbackViewControllerShowBlock = showBlock;
+}
+
 + (void)showFromController:(UIViewController*)controller
                placeholder:(NSString*)placeholder
                      email:(NSString*)email
                   metaData:(NSDictionary*)metaData
                      image:(UIImage*)image
 {
+    if(ABXFeedbackViewControllerShowBlock)
+    {
+        ABXFeedbackViewControllerShowBlock(controller);
+        return;
+    }
+
     ABXFeedbackViewController *viewController = [[self alloc] init];
     viewController.placeholder = placeholder;
     viewController.defaultEmail = email;
