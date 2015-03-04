@@ -12,6 +12,10 @@
 
 @property (nonatomic, copy) NSString *placeholder;
 
+// If this is set, showFromController: methods will invoke this block instead of
+// showing this controller.
++ (void)setShowFromControllerBlock:(void(^)(UIViewController* controller))showBlock;
+
 + (void)showFromController:(UIViewController*)controller
                placeholder:(NSString*)placeholder;
 
