@@ -15,6 +15,7 @@
 {
     // Virtual
     assert(false);
+    return nil;
 }
 
 + (NSURLSessionDataTask*)fetchList:(NSString*)path
