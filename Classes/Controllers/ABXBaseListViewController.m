@@ -73,14 +73,14 @@
     appbotButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     appbotButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [appbotButton addTarget:self action:@selector(onAppbot) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:appbotButton];
-    
+//    [self.view addSubview:appbotButton];
+
     // Powered by seperator
     UIView *seperator = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame) - 33, CGRectGetWidth(self.view.frame), 1)];
     seperator.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     seperator.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1];
-    [self.view addSubview:seperator];
-    
+//    [self.view addSubview:seperator];
+
     // Activity Indicator
     self.activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.activityView.center = CGPointMake(CGRectGetMidX(self.view.bounds), 100);
